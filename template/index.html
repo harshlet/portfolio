@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Prajapati</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <header>
+       <i class="fa fa-bars burger"></i>
+        <nav>
+            <ul class="nav_links">
+                <li><a href="#skill">Skills</a></li>
+                <li><a href="#project">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contactme">Contact Me</a></li>
+            </ul>
+        </nav>
+    </header>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+    <section class="my-info">
+        <img src="media/img/propic.jpg" alt="propic">
+        <div class="d-flex">
+            <h1>
+                Harsh 
+                <span class="disig">Prajapati</span>
+            </h1>
+            <h2><span class="disig">Fullstack</span> Developer Beginner</h2>
+        </div>
+        
+
+        
+        <a href="#skill"><button><i class="fa fa-arrow-down" aria-hidden="true"></i></button></a>
+    </section>
+
+    <section class="skill" id="skill" name="skill">
+        <h3 class="title">Skills</h3>
+        <div class="skill-info">
+
+            {% for s in skill %}
+             <!-- skills list div start  -->
+             <div class="skill-item">
+                <img src="media/{{ s.logo }}" alt="htm">
+                <span class="name">{{ s.name }}</span>
+            </div>
+            <!-- skills list div end  -->
+            {% endfor %}
+
+        </div>
+    </section>
+
+    <section class="project-list" id="project">
+        <h3 class="title">Project</h3>
+        <div class="project-container">
+
+            {% for p in project %}
+                <!-- project list div start  -->
+                <div class="project">
+                    <img src="media/{{ p.image }}" alt="sm">
+                    <div class="detail">
+                        <h2>{{p.title}}</h2>
+                        <h3>{{ p.technology }}</h3>
+                        <p>{{ p.description }}</p>
+                    </div>
+                </div>
+                <!-- project list div end  -->
+            {% endfor %}
+
+            
+        </div>
+        
+    </section>
+
+
+    <section class="education" id="education">
+        <div class="edm">
+            <h3 class="title">Education</h3>
+            <div class="edudetail">
+                <ul>
+                    <li>
+                        <h3>Diploma in <span class="disig">Computer Engineering</span></h3>
+                        <p>Govt. Polytechnic Gandhinagar</p>
+                        <div class="progres" style="width:100%;background-color:#222831;">
+                            <div class="result" style="width:93%">9.36</div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>Bechlores in Eng. <span class="disig">Computer Engineering</span></h3>
+                        <p>Shree Swaminarayan Institute of Technology</p>
+                        <div class="progres" style="width:100%;background-color:#222831;">
+                            <div class="result" style="width:94%">9.43</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="right">
+            <img src="media/img/edu.png" alt="">
+        </div>
+        
+    </section>
+
+    <section class="education" id="contactme" style="background-color: #222831;height: 100vh;flex-direction: row-reverse;">
+        <div class="edm">
+            <h3 class="title">Contact Me</h3>
+            <i class="none fa fa-circle-o-notch fa-spin " id="load" style="font-size:5rem;color:#F05454"></i> 
+            <i class="none fa fa-check" id="success" style="font-size:5rem;color:green"></i> 
+            <div class="edudetail">
+                <form  class="form-c" id="form-data">
+                    {% csrf_token %}
+                    <input type="tel"  placeholder="Contact No." required id="contactno" name="contactno"> 
+                    <input type="email" placeholder="Email Address" required  id="email" name="email">
+                    <input type="text" placeholder="Full Name" required id="name" name="name">
+                    <textarea name="comments"  cols="50" rows="10" placeholder="Write Your Comments" required id="comments"></textarea>
+                    <button id="submit" type="submit" value="Submit">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="right">
+            <img src="media/img/contact.png" alt="as">
+        </div>
+       
+    </section>
+    
+
+    <script src="{% static 'js/app.js' %}">
+    </script>
+    <script src="{% static 'js/form.js' %}" ></script>
+</body>
+</html>
